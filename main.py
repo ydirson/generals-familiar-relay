@@ -16,8 +16,9 @@ HOST = 'army-forge.onepagerules.com'
 JSON = "application/json"
 
 @app.get("/")
+@limiter.limit("2/minute")
 def get_root(request: Request):
-    return {"Version": "0.0.2"}
+    return {"Version": "0.0.3"}
 
 @app.get("/opr/api/rules/common/{id}")
 def get_commonrules(request: Request, id: str):
